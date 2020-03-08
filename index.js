@@ -132,16 +132,19 @@ inquirer
         message: 'What is your github username?',
         name: 'username'
     },{
+        message:'What is the name of your github project repo?',
+        name: 'repo'
+    },{
         message:'What is the name of your project?',
         name: 'title'
     },{
         message: 'Enter your user story',
         name: 'userStory'
-    }]).then(function({ username,title,userStory }) {
+    }]).then(function({ username,title,userStory,repo }) {
         const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`
 
         axios.get(queryUrl).then(function(res) {
-            
+            console.log(res.data[0].name)
             const rm = `# ${title}
 
 ![bio pic](${res.data[0].owner.avatar_url})
