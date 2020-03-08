@@ -132,15 +132,15 @@ inquirer
         message: 'What is your github username?',
         name: 'username'
     },{
-        message:'What is the name of your github project repo?',
-        name: 'repo'
-    },{
         message:'What is the name of your project?',
         name: 'title'
     },{
+        message: 'Who contributed to this project?',
+        name: 'cont'
+    },{
         message: 'Enter your user story',
         name: 'userStory'
-    }]).then(function({ username,title,userStory,repo }) {
+    }]).then(function({ username,title,userStory,cont }) {
         const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`
 
         axios.get(queryUrl).then(function(res) {
@@ -159,7 +159,7 @@ inquirer
 
 ### Contributors
 
-    * 
+    * ${cont}
 
 ## User Story
 
